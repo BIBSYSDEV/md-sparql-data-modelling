@@ -1,0 +1,22 @@
+# Find projects where collaborators have come from different organizations.
+#
+# Here, we first find project collaborators, then we resolve the parent organizations from the affiliation.
+# Then we filter to exclude all affiliations that are part of the same organization.
+#
+# Similarly, we could filter Subject areas in a hierarchy to find the projects with the greatest interdisciplinary span.
+
+PREFIX : <https://example.org/ontology#>
+
+SELECT DISTINCT ?project WHERE {
+  ?project a :Project ;
+           ?participant1 [
+             :affiliation ?affiliation1
+           ] ;
+           ?participant2 [
+             :affiliation ?affiliation2
+           ] .
+
+  ?parentOrg :hasPart* ?affiliation1
+
+  FILTER NOT EXISTS { ?parentOrg :hasPart* ?affiliation2 }
+}

@@ -1,0 +1,40 @@
+{
+  "@context": {
+    "@vocab": "https://example.org/ontology#",
+    "type": "@type",
+    "id": "@id",
+    "sameAs": {
+      "@type": "@id"
+    }
+  },
+  "@graph": [
+    {
+      "id": "https://entitydata.example.org/person/23911",
+      "type": "Person",
+      "givenName": "Tor",
+      "familyName": "Iversen",
+      "sameAs": "https://cristin.example.org/person/23911"
+    },
+    {
+      "id": "https://entitydata.example.org/person/4583",
+      "type": "Person",
+      "givenName": "Gunn Kristin",
+      "familyName": "Tjoflot",
+      "sameAs": "https://cristin.example.org/person/4583"
+    },
+    {
+      "id": "https://entitydata.example.org/person/4514",
+      "type": "Person",
+      "givenName": "Hans Olav",
+      "familyName": "Melberg",
+      "sameAs": "https://cristin.example.org/person/4514"
+    },
+    {
+      "id": "https://entitydata.example.org/person/5757",
+      "type": "Person",
+      "givenName": "Eline",
+      "familyName": "Aas",
+      "sameAs": "https://cristin.example.org/person/5757"
+    }
+  ]
+}

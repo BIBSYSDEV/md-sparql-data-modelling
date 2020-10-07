@@ -1,0 +1,60 @@
+# Creates a simple English language CSV report from the available data
+# I might not do it this way normally, but it is entirely possible.
+
+PREFIX : <https://example.org/ontology#>
+
+# This select concatenates the participant names into a single cell
+
+SELECT ?title ?start ?end ?status ( CONCAT ( GROUP_CONCAT ( ?person;SEPARATOR='; ') ) AS ?participants ) ?orgName WHERE {
+
+  # Get all the bits together
+  ?project a :Project ;
+           :title ?rawTitle ;
+           :startDate ?rawStart ;
+           :endDate ?rawEnd ;
+           :participant [
+             a ?role ;
+             :identity ?identity ;
+             :affiliation ?affiliation
+           ] ;
+           :status ?rawStatus .
+
+  # Just get the date part
+  BIND ( SUBSTR ( STR ( ?rawStart ), 0, 11 ) AS ?start )
+  BIND ( SUBSTR ( STR ( ?rawEnd ), 0, 11 ) AS ?end )
+
+  # Get the status fragment minus the URI
+  BIND ( REPLACE ( STR ( ?rawStatus ), STR(:), "" ) AS ?status )
+
+  # Using an subquery here as I want the name results ordered by family name
+  {
+    SELECT * WHERE {
+      ?identity a :Person ;
+               :givenName ?givenName ;
+               :familyName ?familyName .
+    }
+    ORDER BY ASC ( ?familyName )
+  }
+
+  # Merge the name elements
+  BIND (CONCAT(CONCAT(?familyName, ", "), ?givenName) AS ?fullName)
+
+  # Add (pm) to the project manager
+  BIND ( IF (STR(?role) = "https://example.org/ontology#ProjectManager", CONCAT(?fullName, " (pm)" ), ?fullName) AS ?person )
+
+  # We want the organization structure
+  ?parentOrg :hasPart* ?affiliation ;
+             :name ?rawOrgName .
+
+  # Get rid of non-top-level organizations
+  FILTER NOT EXISTS {?other :hasPart ?parentOrg}
+
+  # Only in English
+  FILTER (STR(LANG(?rawTitle)) = "en")
+  FILTER (STR(LANG(?rawOrgName)) = "en")
+
+  # Remove language tags
+  BIND ( STR ( ?rawTitle ) as ?title)
+  BIND ( STR ( ?rawOrgName ) as ?orgName)
+}
+GROUP BY ?title ?status ?start ?end ?orgName

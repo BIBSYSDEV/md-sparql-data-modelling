@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+    maven { url "https://jitpack.io" }
+
+}
+
+dependencies {
+    def jenaVersion = '3.16.0'
+    def junitVersion = '5.7.0'
+    implementation group: 'org.apache.jena', name: 'jena-core', version: jenaVersion
+    implementation group: 'org.apache.jena', name: 'jena-arq', version: jenaVersion
+    implementation group: 'com.github.BIBSYSDEV', name: 'nva-commons', version: '0.3.8'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVersion
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
+}
+
+test {
+    useJUnitPlatform()
+}

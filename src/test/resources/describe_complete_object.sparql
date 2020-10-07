@@ -1,0 +1,9 @@
+# Describes each project and each contribution
+# ?participantDetail matches both identity and affiliation
+
+PREFIX : <https://example.org/ontology#>
+
+DESCRIBE ?project ?participantDetail WHERE {
+  ?project a :Project ;
+           :participant [ ?any ?participantDetail ]
+}

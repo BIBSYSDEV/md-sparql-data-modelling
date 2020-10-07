@@ -1,0 +1,63 @@
+{
+  "@context": {
+    "@vocab": "https://example.org/ontology#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "id": "@id",
+    "type": "@type",
+    "language": "@language",
+    "value": "@value",
+    "status": {
+      "@type": "@vocab"
+    },
+    "identity": {
+      "@type": "@id"
+    },
+    "affiliation": {
+      "@type": "@id"
+    },
+    "startDate": {
+      "@type": "xsd:datetime"
+    },
+    "endDate": {
+      "@type": "xsd:datetime"
+    },
+    "title": {
+      "@container": "@language"
+    },
+    "sameAs": {
+      "@type": "@id"
+    }
+  },
+  "id": "https://entitydata.example.org/project/289942",
+  "type": "Project",
+  "title": {
+    "nb": "Health Economics Research Programme at the University of Oslo - HERO",
+    "en": "HERO - Health Economics Research Programme at the University of Oslo - HERO"
+  },
+  "startDate": "1998-07-01T00:00:00.000Z",
+  "endDate": "2011-12-31T00:00:00.000Z",
+  "status": "Concluded",
+  "participant": [
+    {
+      "type": "ProjectManager",
+      "identity": "https://entitydata.example.org/person/23911",
+      "affiliation": "https://entitydata.example.org/organization/185.13.13.0"
+    },
+    {
+      "type": "Participant",
+      "identity": "https://entitydata.example.org/person/4583",
+      "affiliation": "https://entitydata.example.org/organization/185.13.13.0"
+    },
+    {
+      "type": "Participant",
+      "identity": "https://entitydata.example.org/person/4514",
+      "affiliation": "https://entitydata.example.org/organization/185.13.13.0"
+    },
+    {
+      "type": "Participant",
+      "identity": "https://entitydata.example.org/person/5757",
+      "affiliation": "https://entitydata.example.org/organization/185.13.13.0"
+    }
+  ],
+  "sameAs": "https://api.cristin.no/v2/projects/289942"
+}

@@ -1,0 +1,9 @@
+# Manifests two inverse relationships between child and parent
+
+PREFIX : <https://example.org/ontology#>
+
+CONSTRUCT {
+  ?child :isPartOf ?parent .
+} WHERE {
+  ?parent :hasPart ?child .
+}

@@ -1,0 +1,100 @@
+@prefix : <https://example.org/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Project a rdfs:Class ;
+  rdfs:comment "A research project".
+
+:Person a rdfs:Class ;
+  rdfs:comment "A human being who exists or has existed" .
+
+:Organization a rdfs:Class ;
+  rdfs:comment "A group of people that is formally organized as a single, legally defined body with a single, common purpose" .
+
+:Role a rdfs:Class ;
+  rdfs:comment "A function assumed by a Person" .
+
+:ProjectManager a :Role ;
+  rdfs:comment "A function associated with the formal organization and leadership of a project" .
+
+:Participant a :Role ;
+  rdfs:comment "A function associated with carrying out project work in a formal capacity" .
+
+:Contributor a rdfs:Class ;
+  rdfs:comment "A contributor to a project" .
+
+:State a rdfs:Class ;
+  rdfs:comment "A state of a thing, which defines the current activity of the thing" .
+
+:Concluded a :State ;
+  rdfs:Comment "A state of a thing that has formally ended, meaning there is no current activity and that activity may not be resumed" .
+
+:Active a :State ;
+  rdfs:comment "A state of a thing that is currently active" .
+
+:Inactive a :State ;
+  rdfs:comment "A state of a thing that is not currently active, but which may be resumed" .
+
+:title a rdf:Property ;
+  rdfs:comment "The name of a non-living thing" ;
+  rdfs:domain :Organization, :Project ;
+  rdfs:range rdf:langString .
+
+:startDate a rdf:Property ;
+  rdfs:comment "A point in time designating the beginning of something" ;
+  rdfs:domain :Project ;
+  rdfs:range xsd:datetime .
+
+:endDate a rdf:Property ;
+  rdfs:comment "A point in time designating the end of something" ;
+  rdfs:domain :Project ;
+  rdfs:range xsd:datetime .
+
+:status a rdf:Property ;
+  rdfs:comment "The state of a thing" ;
+  rdfs:domain :Project, :Organization ;
+  rdfs:range :State .
+
+:participant a rdf:Property ;
+  rdfs:comment "An assigned Role associated with a Project" ;
+  rdfs:domain :Project ;
+  rdfs:range :Role .
+
+:contributor a rdf:Property ;
+  rdfs:comment "A person who has performed a Role" ;
+  rdfs:domain :Role ;
+  rdfs:range :Person .
+
+:identity a rdf:Property ;
+  rdfs:comment "A person who has contributed to a project" ;
+  rdfs:domain :Contribution ;
+  rdfs:range :Person
+
+:affiliation a rdf:Property ;
+  rdfs:comment "An organization on whose behalf a contribution is made" ;
+  rdfs:domain :Contribution ;
+  rdfs:range :Organization .
+
+:name a rdf:Property ;
+  rdfs:comment "What something is called" ;
+  rdfs:range xsd:string, rdf:langString .
+
+:givenName a rdf:Property ;
+  rdfs:comment "The name of a person in cultures where it is common to have a name that is chosen" ;
+  rdfs:domain :Person ;
+  rdfs:range xsd:string .
+
+:familyName a rdf:Property ;
+  rdfs:comment "The name of a person in cultures where it is common to take a name that is associated with the individual's family";
+  rdfs:domain :Person ;
+  rdfs:range xsd:string .
+
+# Generic relationships
+
+:hasPart a rdf:Property ;
+  rdfs:comment "The relationship between a thing and a thing contained by that thing" .
+
+:sameAs a rdf:Property ;
+  rdfs:comment "A relationship between two things that are the same" .
+

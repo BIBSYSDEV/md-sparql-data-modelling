@@ -1,0 +1,14 @@
+PREFIX : <https://example.org/ontology#>
+
+SELECT DISTINCT ?project WHERE {
+  ?project a :Project ;
+           ?participant1 [
+             :identity ?person1 ;
+             :affiliation ?affiliation1
+           ] ;
+           ?participant2 [
+             :identity ?person2 ;
+             :affiliation ?affiliation2
+           ]
+           FILTER (?affiliation1 != ?affiliation2)
+}

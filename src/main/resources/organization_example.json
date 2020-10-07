@@ -1,0 +1,58 @@
+{
+  "@context": {
+    "@vocab": "https://example.org/ontology#",
+    "id": "@id",
+    "type": "@type",
+    "subunits": {
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "name": {
+      "@id": "https://example.org/ontology#name",
+      "@container": "@language"
+    },
+    "sameAs": {
+      "@type": "@id"
+    },
+    "status": {
+      "@type": "@id"
+    },
+    "hasPart": {
+      "@type": "@id"
+    }
+  },
+  "@graph": [
+    {
+      "id": "https://entitydata.example.org/organization/185.90.0.0",
+      "type": "Organization",
+      "status": "Active",
+      "name": {
+        "en": "University of Oslo",
+        "nb": "Universitetet i Oslo"
+      },
+      "sameAs": "https://api.cristin.no/v2/units/185.90.0.0",
+      "hasPart": "https://entitydata.example.org/organization/185.13.0.0"
+    },
+    {
+      "id": "https://entitydata.example.org/organization/185.13.0.0",
+      "type": "Organization",
+      "status": "Inactive",
+      "name": {
+        "en": "Faculty of health and economics",
+        "nb": "Det helseøkonomiske fakultet"
+      },
+      "sameAs": "https://api.cristin.no/v2/units/185.13.0.0",
+      "hasPart": "https://entitydata.example.org/organization/185.13.13.0"
+    },
+    {
+      "id": "https://entitydata.example.org/organization/185.13.13.0",
+      "type": "Organization",
+      "status": "Inactive",
+      "name": {
+        "en": "Institute of Health Management and Health Economics",
+        "nb": "Institutt for helseadministrasjon og -økonomi"
+      },
+      "sameAs": "https://api.cristin.no/v2/units/185.13.13.0"
+    }
+  ]
+}

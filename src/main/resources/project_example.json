@@ -13,7 +13,8 @@
       "@type": "@id"
     },
     "affiliation": {
-      "@type": "@id"
+      "@type": "@id",
+      "@container": "@set"
     },
     "startDate": {
       "@type": "xsd:datetime"
@@ -41,22 +42,22 @@
     {
       "type": "ProjectManager",
       "identity": "https://entitydata.example.org/person/23911",
-      "affiliation": "https://entitydata.example.org/organization/185.13.13.0"
+      "affiliation": [ "https://entitydata.example.org/organization/185.13.13.0" ]
     },
     {
       "type": "Participant",
       "identity": "https://entitydata.example.org/person/4583",
-      "affiliation": "https://entitydata.example.org/organization/185.13.13.0"
+      "affiliation": [ "https://entitydata.example.org/organization/185.13.13.0" ]
     },
     {
       "type": "Participant",
       "identity": "https://entitydata.example.org/person/4514",
-      "affiliation": "https://entitydata.example.org/organization/185.13.13.0"
+      "affiliation": [ "https://entitydata.example.org/organization/185.13.13.0" ]
     },
     {
       "type": "Participant",
       "identity": "https://entitydata.example.org/person/5757",
-      "affiliation": "https://entitydata.example.org/organization/185.13.13.0"
+      "affiliation": [ "https://entitydata.example.org/organization/185.13.13.0" ]
     }
   ],
   "sameAs": "https://api.cristin.no/v2/projects/289942"

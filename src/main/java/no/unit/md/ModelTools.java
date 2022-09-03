@@ -1,6 +1,6 @@
 package no.unit.md;
 
-import nva.commons.utils.IoUtils;
+import nva.commons.core.ioutils.IoUtils;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;

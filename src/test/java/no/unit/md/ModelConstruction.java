@@ -1,6 +1,6 @@
 package no.unit.md;
 
-import nva.commons.utils.IoUtils;
+import nva.commons.core.ioutils.IoUtils;
 import org.apache.jena.riot.Lang;
 import org.junit.jupiter.api.Test;
 
